@@ -1,0 +1,68 @@
+utc_started=2026-07-23T02:48:44Z
+input=/home/alan/mls-hip-cleanroom/parity-real/cpu_diag/dump/z16128_y02560_x07680/z16128_y02560_x07680_step0_mls/z16128_y02560_x07680_step0_mls_pre000.obj
+passes=5
+radius=12
+origin_zyx=16128,2560,7680
+repetitions=3
+
+== Original ScrollFiesta CPU and clean-room HIP C++ ==
+component=real_comp001
+count=331013
+lop_passes=5
+reference=upstream_cpu_local
+benchmark_reps=3 warmups=1
+cpu_wall_ms=11014.5
+hip_wall_ms=869.455
+hip_mem_total_bytes=16974905344
+hip_mem_free_before_bytes=16971685888
+hip_mem_free_after_bytes=16873684992
+hip_mem_free_delta_bytes=98000896
+cpu_rep_ms=11092.3,11006.9,11014.5
+hip_rep_ms=867.224,870.687,869.455
+nonfinite_count=0
+max_position_error_vox=0.00213777 threshold=0.00124 worst_index=286209
+position_vertices_over_threshold=2
+rms_position_error_vox=1.02769e-05 threshold=0.00022
+max_normal_angle_deg=0.0248666 threshold=0.006 worst_index=241897
+max_sign_insensitive_normal_angle_deg=0.0248666
+normal_vertices_over_threshold=20
+cpu_zero_normals=0
+hip_zero_normals=0
+zero_normal_mismatches=0
+max_normal_length_error=4.94725e-08
+weld_max_position_error_vox=0.00213777 strict_threshold=0.25
+weld_pass=true
+parity_pass=false
+
+== CubeCL HIP on the identical local z-y-x capture ==
+    Finished `release` profile [optimized] target(s) in 2.94s
+     Running `target/release/mls-real-bench cubecl-hip /mnt/f/Alan/Projects/Herculaneum-cubecl-production/herculaneum-mls-cubecl/logs/real-equivalence-20260723T024844Z.pre.positions_zyx.f32 /mnt/f/Alan/Projects/Herculaneum-cubecl-production/herculaneum-mls-cubecl/logs/real-equivalence-20260723T024844Z 5 12 16128 2560 7680 /mnt/f/Alan/Projects/Herculaneum-cubecl-production/herculaneum-mls-cubecl/logs/real-equivalence-20260723T024844Z.cpu.positions_zyx.f32 /mnt/f/Alan/Projects/Herculaneum-cubecl-production/herculaneum-mls-cubecl/logs/real-equivalence-20260723T024844Z.cpu.normals_zyx.f32 /mnt/f/Alan/Projects/Herculaneum-cubecl-production/herculaneum-mls-cubecl/logs/real-equivalence-20260723T024844Z.hip.positions_zyx.f32 /mnt/f/Alan/Projects/Herculaneum-cubecl-production/herculaneum-mls-cubecl/logs/real-equivalence-20260723T024844Z.hip.normals_zyx.f32`
+cubecl_rep_0_ms=927.511
+cubecl_rep_1_ms=930.837
+cubecl_rep_2_ms=900.936
+backend=CubeHip
+count=331013
+passes=5
+compute_normals=true
+cubecl_median_ms=927.511
+cubecl_positions=/mnt/f/Alan/Projects/Herculaneum-cubecl-production/herculaneum-mls-cubecl/logs/real-equivalence-20260723T024844Z.cubecl.positions_zyx.f32
+cubecl_normals=/mnt/f/Alan/Projects/Herculaneum-cubecl-production/herculaneum-mls-cubecl/logs/real-equivalence-20260723T024844Z.cubecl.normals_zyx.f32
+cpu_max_position_error_vox=0.002052250
+cpu_rms_position_error_vox=0.000010215
+cpu_max_normal_angle_deg=0.024687336
+cpu_zero_normal_mismatches=0
+cpu_position_outliers=2
+cpu_normal_outliers=20
+cpu_weld_pass=true
+cpu_strict_parity_pass=false
+clean_hip_max_position_error_vox=0.000145759
+clean_hip_rms_position_error_vox=0.000002010
+clean_hip_max_normal_angle_deg=0.003872668
+clean_hip_zero_normal_mismatches=0
+clean_hip_position_outliers=0
+clean_hip_normal_outliers=0
+clean_hip_weld_pass=true
+clean_hip_strict_parity_pass=true
+
+utc_finished=2026-07-23T02:49:42Z
+report=/mnt/f/Alan/Projects/Herculaneum-cubecl-production/herculaneum-mls-cubecl/logs/real-equivalence-20260723T024844Z.log

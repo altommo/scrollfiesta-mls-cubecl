@@ -1,0 +1,173 @@
+report=/mnt/f/Alan/Projects/Herculaneum/herculaneum-mls-cubecl/logs/gfx1201-test-20260723T005731Z.log
+utc_started=2026-07-23T00:57:31Z
+rustc=rustc 1.92.0 (ded5c06cf 2025-12-08)
+cargo=cargo 1.92.0 (344c4567c 2025-10-21)
+hipcc=HIP version: 7.2.53211-97f5574fe2
+gpu=gfx1201
+bench_side=127
+radius=12
+git_commit=f15a824595a52ed9141af13ab38daa7930878d89
+
+== Independent Python numerical oracle ==
+PASS plane projection
+vertex=(0.25, -0.5, 0.0)
+normal=(0.0, 0.0, 1.0)
+
+== Rust CPU reference tests ==
+   Compiling num-traits v0.2.19
+   Compiling syn v2.0.119
+   Compiling approx v0.5.1
+   Compiling bytemuck_derive v1.11.0
+   Compiling bytemuck v1.25.2
+   Compiling herculaneum-mls-cubecl v0.1.0 (/mnt/f/Alan/Projects/Herculaneum/herculaneum-mls-cubecl)
+    Finished `release` profile [optimized] target(s) in 3.26s
+     Running unittests src/lib.rs (target/release/deps/herculaneum_mls_cubecl-77eb7058bacf9a3a)
+
+running 2 tests
+test oracle::tests::diagonal_covariance_returns_smallest_axis ... ok
+test oracle::tests::plane_projection_moves_vertices_to_plane ... ok
+
+test result: ok. 2 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+     Running unittests src/bin/mls_bench.rs (target/release/deps/mls_bench-49a711ce2a692460)
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+     Running tests/ffi_smoke.rs (target/release/deps/ffi_smoke-bd628fc9412954ca)
+
+running 1 test
+test legacy_symbol_projects_a_plane ... ok
+
+test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+   Doc-tests herculaneum_mls_cubecl
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+
+== CubeCL CPU build and comparison ==
+   Compiling herculaneum-mls-cubecl v0.1.0 (/mnt/f/Alan/Projects/Herculaneum/herculaneum-mls-cubecl)
+    Finished `release` profile [optimized] target(s) in 15.79s
+     Running `target/release/mls-bench cubecl-cpu`
+surface_points=16129 vertices=3969 grid=[14, 14, 4] radius=12
+backend=cubecl-cpu
+reference_rust_cpu_ms=13.143
+candidate_cold_ms=455.096
+candidate_warm_ms=21.062
+cold_max_vertex_abs_error=0.000000000
+cold_max_normal_abs_error=0.000000000
+max_vertex_abs_error=0.000000000
+max_normal_abs_error=0.000000000
+first_vertex=[-61.899975, -62.098034, -0.0022305518]
+first_normal=[-1.6310425e-5, -0.0013070587, 0.99999917]
+correctness_gate=PASS
+
+== CubeCL HIP build and gfx1201 comparison ==
+ Downloading crates ...
+  Downloaded cubecl-hip v0.10.0
+  Downloaded cubecl-hip-sys v7.2.5321100
+   Compiling serde v1.0.229
+   Compiling memchr v2.8.3
+   Compiling regex-syntax v0.8.11
+   Compiling serde_core v1.0.229
+   Compiling ciborium-io v0.2.2
+   Compiling cubecl-common v0.10.0
+   Compiling prettyplease v0.2.37
+   Compiling syn v2.0.119
+   Compiling nom v8.0.0
+   Compiling aho-corasick v1.1.4
+   Compiling cubecl-runtime v0.10.0
+   Compiling object v0.37.3
+   Compiling serde_json v1.0.151
+   Compiling cubecl v0.10.0
+   Compiling itertools v0.14.0
+   Compiling cubecl-macros v0.10.0
+   Compiling smallvec v1.15.2
+   Compiling portable-atomic v1.14.0
+   Compiling regex-automata v0.4.16
+   Compiling parking_lot_core v0.9.12
+   Compiling parking_lot v0.12.5
+   Compiling tynm v0.2.0
+   Compiling darling_core v0.21.3
+   Compiling darling_core v0.23.0
+   Compiling regex v1.13.1
+   Compiling backtrace v0.3.76
+   Compiling zerocopy-derive v0.8.55
+   Compiling bytemuck_derive v1.11.0
+   Compiling derive_more-impl v2.1.1
+   Compiling derive-new v0.7.0
+   Compiling variadics_please v1.1.0
+   Compiling cubecl-hip-sys v7.2.5321100
+   Compiling sanitize-filename v0.6.0
+   Compiling cubecl-zspace v0.10.0
+   Compiling darling_macro v0.21.3
+   Compiling darling_macro v0.23.0
+   Compiling bytemuck v1.25.2
+   Compiling zerocopy v0.8.55
+   Compiling darling v0.23.0
+   Compiling darling v0.21.3
+   Compiling derive_more v2.1.1
+   Compiling enumset_derive v0.15.0
+   Compiling cubecl-macros-internal v0.10.0
+   Compiling enumset v1.1.14
+   Compiling half v2.7.1
+   Compiling ahash v0.8.12
+   Compiling ciborium-ll v0.2.2
+   Compiling float8 v0.7.0
+   Compiling ciborium v0.2.2
+   Compiling cubecl-ir v0.10.0
+   Compiling cubecl-core v0.10.0
+   Compiling cubecl-opt v0.10.0
+   Compiling cubecl-cpp v0.10.0
+   Compiling cubecl-hip v0.10.0
+   Compiling herculaneum-mls-cubecl v0.1.0 (/mnt/f/Alan/Projects/Herculaneum/herculaneum-mls-cubecl)
+    Finished `release` profile [optimized] target(s) in 23.94s
+     Running `target/release/mls-bench cubecl-hip`
+surface_points=16129 vertices=3969 grid=[14, 14, 4] radius=12
+backend=cubecl-hip
+reference_rust_cpu_ms=13.768
+candidate_cold_ms=1180.508
+candidate_warm_ms=7.068
+cold_max_vertex_abs_error=0.000000954
+cold_max_normal_abs_error=0.000000119
+max_vertex_abs_error=0.000000954
+max_normal_abs_error=0.000000119
+first_vertex=[-61.899975, -62.098034, -0.0022305574]
+first_normal=[-1.6310376e-5, -0.0013070591, 0.99999917]
+correctness_gate=PASS
+
+== Shared-library ABI symbol ==
+   Compiling serde v1.0.229
+   Compiling serde_core v1.0.229
+   Compiling cubecl-common v0.10.0
+   Compiling prettyplease v0.2.37
+   Compiling cubecl-runtime v0.10.0
+   Compiling cubecl-macros v0.10.0
+   Compiling cubecl v0.10.0
+   Compiling cubecl-hip-sys v7.2.5321100
+   Compiling half v2.7.1
+   Compiling smallvec v1.15.2
+   Compiling portable-atomic v1.14.0
+   Compiling enumset v1.1.14
+   Compiling parking_lot_core v0.9.12
+   Compiling cubecl-zspace v0.10.0
+   Compiling parking_lot v0.12.5
+   Compiling ciborium-ll v0.2.2
+   Compiling float8 v0.7.0
+   Compiling ciborium v0.2.2
+   Compiling cubecl-ir v0.10.0
+   Compiling cubecl-core v0.10.0
+   Compiling cubecl-opt v0.10.0
+   Compiling cubecl-cpp v0.10.0
+   Compiling cubecl-hip v0.10.0
+   Compiling herculaneum-mls-cubecl v0.1.0 (/mnt/f/Alan/Projects/Herculaneum/herculaneum-mls-cubecl)
+    Finished `release` profile [optimized] target(s) in 18.49s
+0000000000234240 T MLS_project_verts
+
+utc_finished=2026-07-23T00:58:36Z
+all_gates=PASS
+report=/mnt/f/Alan/Projects/Herculaneum/herculaneum-mls-cubecl/logs/gfx1201-test-20260723T005731Z.log

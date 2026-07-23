@@ -1,0 +1,107 @@
+report=logs/final-gfx1201-gate.log
+utc_started=2026-07-23T02:52:16Z
+rustc=rustc 1.92.0 (ded5c06cf 2025-12-08)
+cargo=cargo 1.92.0 (344c4567c 2025-10-21)
+hipcc=HIP version: 7.2.53211-97f5574fe2
+gpu=gfx1201
+bench_side=127
+radius=12
+
+== Independent Python numerical oracle ==
+PASS plane projection
+vertex=(0.25, -0.5, 0.0)
+normal=(0.0, 0.0, 1.0)
+
+== Rust CPU reference tests ==
+   Compiling herculaneum-mls-cubecl v0.1.0 (/mnt/f/Alan/Projects/Herculaneum-cubecl-production/herculaneum-mls-cubecl)
+    Finished `release` profile [optimized] target(s) in 2.30s
+     Running unittests src/lib.rs (target/release/deps/herculaneum_mls_cubecl-77eb7058bacf9a3a)
+
+running 3 tests
+test oracle::tests::diagonal_covariance_returns_smallest_axis ... ok
+test oracle::tests::plane_projection_moves_vertices_to_plane ... ok
+test oracle::tests::public_project_is_exactly_one_fixed_support_pass ... ok
+
+test result: ok. 3 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+     Running unittests src/bin/mls_bench.rs (target/release/deps/mls_bench-49a711ce2a692460)
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+     Running unittests src/bin/mls_real_bench.rs (target/release/deps/mls_real_bench-3d340348412743da)
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+     Running tests/cube_current_support.rs (target/release/deps/cube_current_support-d2cefe083e2a92de)
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+     Running tests/ffi_smoke.rs (target/release/deps/ffi_smoke-0bcedecf25ecb12b)
+
+running 2 tests
+test explicit_arena_api_projects_a_plane ... ok
+test legacy_symbol_accepts_foreign_scratch_and_rebuilds_current_support ... ok
+
+test result: ok. 2 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.01s
+
+   Doc-tests herculaneum_mls_cubecl
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+
+== CubeCL CPU build and comparison ==
+   Compiling herculaneum-mls-cubecl v0.1.0 (/mnt/f/Alan/Projects/Herculaneum-cubecl-production/herculaneum-mls-cubecl)
+    Finished `release` profile [optimized] target(s) in 15.92s
+     Running `target/release/mls-bench cubecl-cpu`
+surface_points=16129 vertices=3969 grid=[14, 14, 4] radius=12
+backend=cubecl-cpu
+reference_rust_cpu_ms=6.191
+candidate_cold_ms=438.658
+candidate_warm_ms=5.792
+cold_max_vertex_abs_error=0.000000477
+cold_max_normal_abs_error=0.000000119
+max_vertex_abs_error=0.000000477
+max_normal_abs_error=0.000000119
+first_vertex=[-61.899975, -62.098034, -0.002231121]
+first_normal=[-1.7649123e-5, -0.0013091341, 0.99999917]
+correctness_gate=PASS
+
+== CubeCL HIP build and gfx1201 comparison ==
+   Compiling cubecl-runtime v0.10.0
+   Compiling cubecl-core v0.10.0
+   Compiling cubecl-opt v0.10.0
+   Compiling cubecl-cpp v0.10.0
+   Compiling cubecl-hip v0.10.0
+   Compiling cubecl v0.10.0
+   Compiling herculaneum-mls-cubecl v0.1.0 (/mnt/f/Alan/Projects/Herculaneum-cubecl-production/herculaneum-mls-cubecl)
+    Finished `release` profile [optimized] target(s) in 14.90s
+     Running `target/release/mls-bench cubecl-hip`
+surface_points=16129 vertices=3969 grid=[14, 14, 4] radius=12
+backend=cubecl-hip
+reference_rust_cpu_ms=6.938
+candidate_cold_ms=1192.094
+candidate_warm_ms=2.959
+cold_max_vertex_abs_error=0.000000625
+cold_max_normal_abs_error=0.000000119
+max_vertex_abs_error=0.000000625
+max_normal_abs_error=0.000000119
+first_vertex=[-61.899975, -62.098034, -0.002231062]
+first_normal=[-1.7649123e-5, -0.0013091341, 0.99999917]
+correctness_gate=PASS
+
+== Shared-library ABI symbol ==
+   Compiling herculaneum-mls-cubecl v0.1.0 (/mnt/f/Alan/Projects/Herculaneum-cubecl-production/herculaneum-mls-cubecl)
+    Finished `release` profile [optimized] target(s) in 4.41s
+0000000000255440 T MLS_project_verts
+
+utc_finished=2026-07-23T02:52:57Z
+all_gates=PASS
+report=logs/final-gfx1201-gate.log

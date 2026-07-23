@@ -1,0 +1,66 @@
+utc_started=2026-07-23T02:49:42Z
+input=/home/alan/mls-hip-cleanroom/parity-real/cpu_diag/dump/z16128_y02560_x07680/z16128_y02560_x07680_step0_mls/z16128_y02560_x07680_step0_mls_pre000.obj
+passes=20
+radius=12
+origin_zyx=16128,2560,7680
+repetitions=1
+
+== Original ScrollFiesta CPU and clean-room HIP C++ ==
+component=real_comp001
+count=331013
+lop_passes=20
+reference=upstream_cpu_local
+benchmark_reps=1 warmups=0
+cpu_wall_ms=51757
+hip_wall_ms=4956.23
+hip_mem_total_bytes=16974905344
+hip_mem_free_before_bytes=16971685888
+hip_mem_free_after_bytes=16873684992
+hip_mem_free_delta_bytes=98000896
+cpu_rep_ms=51757
+hip_rep_ms=4956.23
+nonfinite_count=0
+max_position_error_vox=0.0390429 threshold=0.00124 worst_index=14406
+position_vertices_over_threshold=17
+rms_position_error_vox=0.000104177 threshold=0.00022
+max_normal_angle_deg=1.69153 threshold=0.006 worst_index=272141
+max_sign_insensitive_normal_angle_deg=1.69153
+normal_vertices_over_threshold=90
+cpu_zero_normals=0
+hip_zero_normals=0
+zero_normal_mismatches=0
+max_normal_length_error=4.77435e-08
+weld_max_position_error_vox=0.0390429 strict_threshold=0.25
+weld_pass=true
+parity_pass=false
+
+== CubeCL HIP on the identical local z-y-x capture ==
+    Finished `release` profile [optimized] target(s) in 2.63s
+     Running `target/release/mls-real-bench cubecl-hip /mnt/f/Alan/Projects/Herculaneum-cubecl-production/herculaneum-mls-cubecl/logs/real-equivalence-20260723T024942Z.pre.positions_zyx.f32 /mnt/f/Alan/Projects/Herculaneum-cubecl-production/herculaneum-mls-cubecl/logs/real-equivalence-20260723T024942Z 20 12 16128 2560 7680 /mnt/f/Alan/Projects/Herculaneum-cubecl-production/herculaneum-mls-cubecl/logs/real-equivalence-20260723T024942Z.cpu.positions_zyx.f32 /mnt/f/Alan/Projects/Herculaneum-cubecl-production/herculaneum-mls-cubecl/logs/real-equivalence-20260723T024942Z.cpu.normals_zyx.f32 /mnt/f/Alan/Projects/Herculaneum-cubecl-production/herculaneum-mls-cubecl/logs/real-equivalence-20260723T024942Z.hip.positions_zyx.f32 /mnt/f/Alan/Projects/Herculaneum-cubecl-production/herculaneum-mls-cubecl/logs/real-equivalence-20260723T024942Z.hip.normals_zyx.f32`
+cubecl_rep_0_ms=5177.331
+backend=CubeHip
+count=331013
+passes=20
+compute_normals=true
+cubecl_median_ms=5177.331
+cubecl_positions=/mnt/f/Alan/Projects/Herculaneum-cubecl-production/herculaneum-mls-cubecl/logs/real-equivalence-20260723T024942Z.cubecl.positions_zyx.f32
+cubecl_normals=/mnt/f/Alan/Projects/Herculaneum-cubecl-production/herculaneum-mls-cubecl/logs/real-equivalence-20260723T024942Z.cubecl.normals_zyx.f32
+cpu_max_position_error_vox=0.039885289
+cpu_rms_position_error_vox=0.000104474
+cpu_max_normal_angle_deg=1.690948594
+cpu_zero_normal_mismatches=0
+cpu_position_outliers=15
+cpu_normal_outliers=87
+cpu_weld_pass=true
+cpu_strict_parity_pass=false
+clean_hip_max_position_error_vox=0.002622004
+clean_hip_rms_position_error_vox=0.000009656
+clean_hip_max_normal_angle_deg=0.143124914
+clean_hip_zero_normal_mismatches=0
+clean_hip_position_outliers=3
+clean_hip_normal_outliers=16
+clean_hip_weld_pass=true
+clean_hip_strict_parity_pass=false
+
+utc_finished=2026-07-23T02:50:57Z
+report=/mnt/f/Alan/Projects/Herculaneum-cubecl-production/herculaneum-mls-cubecl/logs/real-equivalence-20260723T024942Z.log
